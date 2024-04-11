@@ -21,30 +21,54 @@ Input: n = 15
 Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 */
 
-
 const int = document.getElementById("int");
 const check = document.getElementById("check");
 const result = document.getElementById("result");
 
 const checkDivisibility = (inputVal) => {
-    let arr = [];
     inputVal = int.value;
-    for(let i = 1; i <= inputVal; i++) {
+    let arr = Array.from({ length: inputVal }, (_, i) => {
+        i += 1;
         if (i % 3 === 0 && i % 5 === 0) {
-            arr.push("FizzBuzz");
+            return "FizzBuzz";
+        } else if (i % 3 === 0) {
+            return "Fizz";
+        } else if (i % 5 === 0) {
+            return "Buzz";
+        } else {
+            return i;
         }
-        else if (i % 3 === 0) {
-            arr.push("Fizz");
-        }
-        else if (i % 5 === 0) {
-            arr.push("Buzz");
-        }
-        else {
-            arr.push(i);
-        }
-    }
-    result.textContent = arr;
+    });
+    result.textContent = arr.join(", ");
     console.log(arr);
 }
 
 check.addEventListener("click", checkDivisibility);
+
+
+// const int = document.getElementById("int");
+// const check = document.getElementById("check");
+// const result = document.getElementById("result");
+
+// const checkDivisibility = (inputVal) => {
+//     let arr = [];
+//     inputVal = int.value;
+//     for(let i = 1; i <= inputVal; i++) {
+//         if (i % 3 === 0 && i % 5 === 0) {
+//             arr.push("FizzBuzz");
+//         }
+//         else if (i % 3 === 0) {
+//             arr.push("Fizz");
+//         }
+//         else if (i % 5 === 0) {
+//             arr.push("Buzz");
+//         }
+//         else {
+//             arr.push(i);
+//         }
+//     }
+//     result.textContent = arr;
+//     console.log(arr);
+// }
+
+// check.addEventListener("click", checkDivisibility);
